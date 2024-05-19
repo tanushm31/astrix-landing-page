@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Inter, Krona_One, Lexend } from "next/font/google";
-import Marquee from "react-fast-marquee";
 // import Marquee from "./Marquee";
 
 const krona = Krona_One({
