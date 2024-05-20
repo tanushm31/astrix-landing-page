@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Inter, Krona_One, Lexend } from "next/font/google";
+import { animate } from "motion";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 // import Marquee from "./Marquee";
 
@@ -13,8 +15,8 @@ const krona = Krona_One({
 	variable: "--font-krona",
 	subsets: ["latin"],
 });
-const lexend = Krona_One({
-	weight: "400",
+const lexend = Lexend({
+	weight: ["400"],
 	variable: "--font-lexend",
 	subsets: ["latin"],
 });
@@ -36,15 +38,16 @@ type ISlide = {
 
 const Slide = ({ image, name, id }: ISlide) => {
 	console.log("Image URL : ", `/Collections/${image}.png`);
-	const perc = 0.9;
+	const perc = 1;
 	// if (id === 1)
 	return (
-		<div className="flex flex-col justify-end h-full min-w-[412px] text-clip">
+		<div className="slide-container flex flex-col justify-end h-full min-w-[412px] text-clip mr-[90px]">
 			<div className={`text-3xl ${lexend.className} text-wrap pr-1 z-50`}>
 				{name} ft. Kanye West
 			</div>
 			<Image
 				src={`/Collections/${image}.png`}
+				priority={true}
 				alt={name}
 				height={630 * perc}
 				width={412 * perc}
@@ -89,9 +92,9 @@ const EventSideBar = () => {
 								d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
 							/>
 						</svg>
-						<p>Venue</p>
+						<p className="ml-2">Venue</p>
 					</span>
-					<span className="flex justify-center items-center ml-3">
+					<span className="flex justify-center items-center ml-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -107,7 +110,7 @@ const EventSideBar = () => {
 							/>
 						</svg>
 
-						<p>04/3/2024 @19:00</p>
+						<p className="ml-2">04/3/2024 @19:00</p>
 					</span>
 				</div>
 				<div>
@@ -251,17 +254,47 @@ export default function Home() {
 		{ id: 3, image: "asset3", name: "Collection 3" },
 		{ id: 4, image: "asset4", name: "Collection 4" },
 	];
+	const [btnInput, setBtnInput] = useState<number | undefined>(undefined);
+	const scrollToNextSlide = () => {
+		// Logic to determine the next slide index
+		// For example, if you're currently on slide 1, go to slide 2, and so on
+		// You can use state or any other mechanism to track the current slide index
+		// Scroll to the next slide
+		// const nextSlideElement = document.getElementById(`slide-${nextSlideIndex}`);
+		// if (nextSlideElement) {
+		// 	nextSlideElement.scrollIntoView({ behavior: "smooth" });
+		// }
+	};
+	const switchToSlide = (i: number | undefined) => {
+		if (i === undefined) return;
+		console.log("Switching to slide : ", i);
+		const slides = document.querySelectorAll(".slide-container");
+		if (slides.length === 0) return;
+		if (slides.length <= i) {
+			alert("Slide index out of bounds");
+			return;
+		}
+
+		slides[i].scrollIntoView({ behavior: "smooth" });
+		// Rather than scroll into view I want the slide to be scrolled till the left end of the parent div
+
+		// const slide = slides[i];
+		// const parent = slide.parentElement;
+		// parent.scrollLeft = slide.offsetLeft;
+
+		// animate();
+	};
 	const [pressedButton, setPressedButton] = useState<"Events" | "Collections">(
 		"Events"
 	);
 
 	return (
 		<main
-			className={`w-screen h-screen flex justify-between bg-matte-basic p-0`}
+			className={`relative w-screen h-screen flex justify-between bg-matte-basic p-0`}
 		>
 			<div className="relative bg-matte-basic h-full w-[58%] flex flex-col justify-around ">
 				<div
-					className={`absolute top-30 z-10 w-[360px] h-[70%] font-extrabold text-white/20 text-6xl text-wrap flex justify-around flex-col ${lexend.className} pl-5`}
+					className={`absolute top-30 z-10 w-[360px] h-[90%] font-extrabold text-white/20 text-6xl text-wrap flex justify-around flex-col ${lexend.className} pl-5`}
 				>
 					<div className="flex flex-col">
 						<span>ASTR</span>
@@ -290,10 +323,10 @@ export default function Home() {
 				</div>
 				<div className="h-[95%] w-full flex flex-col justify-center items-center overflow-hidden">
 					<div className="z-30 flex overflow-x-scroll overflow-y-auto items-center ml-[200px]">
-					{colllectionsDetails.map((collection) => {
-						return <Slide key={collection.name} {...collection} />;
-					})}
-					{/* <Slide {...colllectionsDetails[0]} /> */}
+						{colllectionsDetails.map((collection) => {
+							return <Slide key={collection.name} {...collection} />;
+						})}
+						{/* <Slide {...colllectionsDetails[0]} /> */}
 					</div>
 					<div className="w-full h-[100px] p-2 flex justify-start items-center">
 						<a
@@ -325,7 +358,7 @@ export default function Home() {
 				</div>
 			</div>
 			<div
-				className="bg-banner-purple h-full w-[6%] text-3xl font-bold text-white flex items-center justify-end leading-1 text-nowrap overflow-hidden"
+				className="bg-banner-purple h-full w-[6%] text-3xl font-bold text-matte-basic flex items-center justify-end leading-1 text-nowrap overflow-hidden"
 				style={{ writingMode: "vertical-rl" }}
 			>
 				{/* {bannerTexts.join(" * ")} */}
