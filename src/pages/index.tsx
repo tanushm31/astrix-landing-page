@@ -250,13 +250,10 @@ export default function Home() {
 		{ id: 3, image: "asset3", name: "Collection 3" },
 		{ id: 4, image: "asset4", name: "Collection 4" },
 	];
+	const [pressedButton, setPressedButton] = useState<"Events" | "Collections">(
+		"Events"
+	);
 
-	const eventDetails = [
-		{ id: 1, image: "asset1", name: "Event 1" },
-		{ id: 2, image: "asset2", name: "Event 2" },
-		{ id: 3, image: "asset3", name: "Event 3" },
-		{ id: 4, image: "asset4", name: "Event 4" },
-	];
 	return (
 		<main
 			className={`w-screen h-screen flex justify-between bg-matte-basic p-0`}
@@ -296,6 +293,34 @@ export default function Home() {
 						return <Slide key={collection.name} {...collection} />;
 					})}
 					{/* <Slide {...colllectionsDetails[0]} /> */}
+					</div>
+					<div className="w-full h-[100px] p-2 flex justify-start items-center">
+						<a
+							// href=""
+							onClick={() => {
+								setPressedButton("Events");
+							}}
+							className={`${
+								pressedButton === "Events"
+									? "bg-gray-900 py-2"
+									: "bg-gray-600 py-2"
+							} flex justify-start items-center w-[100px] text-sm text-white px-5 rounded-full hover:cursor-pointer  select-none`}
+						>
+							Events
+						</a>
+						<a
+							onClick={() => {
+								setPressedButton("Collections");
+							}}
+							className={`${
+								pressedButton === "Collections"
+									? "bg-gray-900 py-2"
+									: "bg-gray-600 py-2"
+							} flex justify-start items-center w-[100px] text-sm text-white px-5 rounded-full hover:cursor-pointer -ml-9 select-none`}
+						>
+							Collection
+						</a>
+					</div>
 				</div>
 			</div>
 			<div
