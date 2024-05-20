@@ -44,6 +44,103 @@ const Slide = ({ image, name, id }: ISlide) => {
 	);
 };
 
+const EventSideBar = () => {
+	const perc = 0.9;
+	return (
+		<div
+			className={`flex flex-col justify-between items-start w-full h-full p-8 ${lexend.className}`}
+		>
+			<div className="font-semibold w-[60%] text-[30px] leading-tight">
+				Explore Your First Event
+			</div>
+			<div className=" w-full flex flex-col items-start space-y-3">
+				<div className={`text-5xl ${lexend_logo.variable}`}>Event Name</div>
+				<div className="flex w-full justify-start">
+					<span className="flex  justify-center items-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={1.5}
+							stroke="currentColor"
+							className="w-6 h-6"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+							/>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+							/>
+						</svg>
+						<p>Venue</p>
+					</span>
+					<span className="flex justify-center items-center ml-3">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={1.5}
+							stroke="currentColor"
+							className="w-6 h-6"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+							/>
+						</svg>
+
+						<p>04/3/2024 @19:00</p>
+					</span>
+				</div>
+				<div>
+					Lorem ipsum dolor sit amet consectetur. Ac lorem massa in morbi et sed
+					ipsum. Pellentesque mattis condimentum ut nulla.
+				</div>
+				<div className="font-semibold w-[60%] text-[30px] leading-tight">
+					Artist Lineup
+				</div>
+				<div className="h-[200px] w-full flex items-center justify-center">
+					<Image
+						src="/ArtistLineup3.png"
+						alt="Artist Image"
+						height={150 * perc}
+						width={145 * perc}
+						// fill={}
+						className="object-cover rounded z-20"
+					/>
+					<Image
+						src="/ArtistLineup2.png"
+						alt="Artist Image"
+						height={198 * perc}
+						width={192 * perc}
+						// fill={}
+						className="object-cover rounded -mx-[1px] z-50"
+					/>
+					<Image
+						src="/ArtistLineup1.png"
+						alt="Artist Image"
+						height={150 * perc}
+						width={145 * perc}
+						// fill={}
+						className="object-cover rounded z-20"
+					/>
+				</div>
+			</div>
+			<div className=" w-full flex justify-between items-center">
+				<Image src="/qrcode.png" alt="QR Code" height={100} width={100} />
+				<button className="px-4 py-2 bg-[#FFCA5F] text-matte-basic font-bold rounded-full">
+					Join Waitlist
+				</button>
+			</div>
+		</div>
+	);
+};
+
 export default function Home() {
 	const bannerTexts = [
 		"Collection Live : Meta Lives , live on astrix",
@@ -104,7 +201,29 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className="bg-matte-basic h-full w-[36%]"></div>
+			<div className="bg-matte-basic h-full w-[36%]">
+				<EventSideBar />
+				{/* <div className="abosulute block right-3 top-2 h-10 z-50 bg-red-500 p-2">
+					<input
+						type="number"
+						min={0}
+						max={3}
+						onChange={(e) => {
+							setBtnInput(parseInt(e.target.value));
+						}}
+						className="w-[100px] text-black"
+					></input>{" "}
+					<button
+						onClick={() => {
+							console.log("Switching to slide : ", btnInput);
+							switchToSlide(btnInput);
+						}}
+						className="flex items-center justify-center bg-green-500 ml-2 p-2"
+					>
+						Switch
+					</button>
+				</div> */}
+			</div>
 		</main>
 	);
 }
