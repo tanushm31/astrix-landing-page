@@ -64,7 +64,9 @@ const EventSideBar = () => {
 				Explore Your First Event
 			</div>
 			<div className=" w-full flex flex-col items-start space-y-3">
-				<div className={`text-5xl ${lexend_logo.variable}`}>Event Name</div>
+				<div className={`text-5xl ${lexend_logo.variable} font-extrabold`}>
+					Event Name
+				</div>
 				<div className="flex w-full justify-start">
 					<span className="flex  justify-center items-center">
 						<svg
@@ -273,7 +275,23 @@ export default function Home() {
 						<span>BLES</span>
 					</div>
 				</div>
-				<div className="z-30 flex overflow-x-scroll overflow-y-auto h-[90%] items-center">
+				<div className="w-full p-5 flex items-center">
+					<Image
+						src="/logo.png"
+						alt="Astrix Logo"
+						height={50}
+						width={50}
+						// fill={}
+						className="object-cover rotated-image"
+					/>
+					<span
+						className={`${lexend_logo.className} ml-3 text-logo-yellow font-extrabold text-4xl`}
+					>
+						Astrix.
+					</span>
+				</div>
+				<div className="h-[95%] w-full flex flex-col justify-center items-center overflow-hidden">
+					<div className="z-30 flex overflow-x-scroll overflow-y-auto items-center ml-[200px]">
 					{colllectionsDetails.map((collection) => {
 						return <Slide key={collection.name} {...collection} />;
 					})}
