@@ -17,6 +17,11 @@ const lexend = Krona_One({
 	variable: "--font-lexend",
 	subsets: ["latin"],
 });
+const lexend_logo = Lexend({
+	weight: ["800"],
+	variable: "--font-lexend-logo",
+	subsets: ["latin"],
+});
 
 const duplicateText = (text: string, count: number) => {
 	return new Array(count).fill(text).join(" * ");
