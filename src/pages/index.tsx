@@ -146,6 +146,92 @@ const EventSideBar = () => {
 	);
 };
 
+const CollectibleCard = () => {
+	return (
+		<div className="w-[500px] flex flex-col justify-start items-center px-[4px] py-[2px] text-xs bg-banner-purple rounded mr-2">
+			<div
+				className={`${inter.className} w-full text-[10px] flex items-center justify-between`}
+			>
+				<div className="bg-matte-basic rounded-full px-2 py-0">2024</div>
+				<div className="flex text-black justify-center items-center">
+					By <span className="font-bold ">Pablo</span>
+				</div>
+			</div>
+			<div className="w-full flex justify-center items-center text-sm text-black">
+				Collectible Name
+			</div>
+			<Image
+				src="/Collections/asset3.png"
+				alt="Collection Image"
+				height={164}
+				width={143}
+				// fill={}
+				className="object-fill rounded max-w-full border-2 border-matte-basic"
+			/>
+		</div>
+	);
+};
+
+const CollectionsSidebar = () => {
+	const peopleImages = [
+		"/avatar1.jpg",
+		"/avatar2.jpg",
+		"/avatar1.jpg",
+		"/avatar2.jpg",
+		"/avatar1.jpg",
+	];
+
+	const perc = 0.9;
+	return (
+		<div
+			className={`flex flex-col justify-between items-start w-full h-full p-8 ${lexend.className}`}
+		>
+			<div className="font-semibold w-[60%] text-[30px] leading-tight">
+				Explore Your First Collectible
+			</div>
+			<div className=" w-full flex flex-col items-start space-y-3">
+				<div className={`text-5xl ${lexend_logo.variable} font-extrabold`}>
+					Meta
+					<br /> Lives
+				</div>
+				<div className="flex w-full justify-start">
+					<div className=" text-[30px] leading-tight">
+						Explore Your First Collectible
+					</div>
+				</div>
+				<div>
+					Lorem ipsum dolor sit amet consectetur. Ac lorem massa in morbi et sed
+					ipsum. Pellentesque mattis condimentum ut nulla.
+				</div>
+				<div className="text-[30px] flex justify-between items-center w-full">
+					<div className="flex items-center justify-center h-[40px] ml-4">
+						{peopleImages.map((image, i) => {
+							return (
+								<Avatar key={i} className="-ml-3">
+									<AvatarImage src={image} />
+									<AvatarFallback>FL</AvatarFallback>
+								</Avatar>
+							);
+						})}
+					</div>
+					<div className="text-[20px] flex">22k people interested</div>
+				</div>
+			</div>
+
+			<div className=" py-1 w-full flex justify-start items-center overflow-x-scroll overflow-y-hidden flex-nowrap">
+				<CollectibleCard />
+				<CollectibleCard />
+				<CollectibleCard />
+			</div>
+			<div className=" w-full flex justify-end items-center">
+				{/* <Image src="/qrcode.png" alt="QR Code" height={100} width={100} /> */}
+				<button className="px-4 py-2 bg-[#FFCA5F] text-matte-basic font-bold rounded-full">
+					Join Waitlist
+				</button>
+			</div>
+		</div>
+	);
+};
 export default function Home() {
 	const bannerTexts = [
 		"Collection Live : Meta Lives , live on astrix",
