@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Inter, Krona_One, Lexend } from "next/font/google";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 // import Marquee from "./Marquee";
 
 const inter = Inter({
