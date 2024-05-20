@@ -341,7 +341,9 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="bg-matte-basic h-full w-[36%]">
-				<EventSideBar />
+				{/* <EventSideBar /> */}
+				{pressedButton === "Events" ? <EventSideBar /> : <CollectionsSidebar />}
+
 				{/* <div className="abosulute block right-3 top-2 h-10 z-50 bg-red-500 p-2">
 					<input
 						type="number"
