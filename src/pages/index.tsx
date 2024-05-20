@@ -2,6 +2,11 @@ import Image from "next/image";
 import { Inter, Krona_One, Lexend } from "next/font/google";
 // import Marquee from "./Marquee";
 
+const inter = Inter({
+	weight: ["400", "500", "600"],
+	variable: "--font-inter",
+	subsets: ["latin"],
+});
 const krona = Krona_One({
 	weight: "400",
 	variable: "--font-krona",
